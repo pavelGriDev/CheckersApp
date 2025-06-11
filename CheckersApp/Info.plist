@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict/>
+	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>This app requires access to the local network to enable multiplayer gameplay with nearby devices.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_checkers._tcp</string>
+		<string>_checkers._udp</string>
+	</array>
+</dict>
+</plist>

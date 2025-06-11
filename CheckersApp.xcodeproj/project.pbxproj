@@ -10,6 +10,8 @@
 		CEC5BB3F2DF8EC52002B1D52 /* CheckersAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */; };
 		CEC5BB402DF8EC52002B1D52 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB3D2DF8EC52002B1D52 /* ContentView.swift */; };
 		CEC5BB412DF8EC52002B1D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */; };
+		CEC5BB432DF8F026002B1D52 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB422DF8F026002B1D52 /* MPCManager.swift */; };
+		CEC5BB492DF8F088002B1D52 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB482DF8F088002B1D52 /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,6 +19,9 @@
 		CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckersAppApp.swift; sourceTree = "<group>"; };
 		CEC5BB3D2DF8EC52002B1D52 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CEC5BB422DF8F026002B1D52 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
+		CEC5BB482DF8F088002B1D52 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		CEC5BB4A2DF98726002B1D52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,11 +54,46 @@
 		CEC5BB3E2DF8EC52002B1D52 /* CheckersApp */ = {
 			isa = PBXGroup;
 			children = (
+				CEC5BB4A2DF98726002B1D52 /* Info.plist */,
 				CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */,
 				CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */,
-				CEC5BB3D2DF8EC52002B1D52 /* ContentView.swift */,
+				CEC5BB472DF8F057002B1D52 /* Service */,
+				CEC5BB442DF8F036002B1D52 /* UI */,
 			);
 			path = CheckersApp;
+			sourceTree = "<group>";
+		};
+		CEC5BB442DF8F036002B1D52 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CEC5BB462DF8F049002B1D52 /* ViewModel */,
+				CEC5BB452DF8F040002B1D52 /* View */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CEC5BB452DF8F040002B1D52 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEC5BB3D2DF8EC52002B1D52 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEC5BB462DF8F049002B1D52 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CEC5BB482DF8F088002B1D52 /* ContentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CEC5BB472DF8F057002B1D52 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CEC5BB422DF8F026002B1D52 /* MPCManager.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,8 +168,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC5BB492DF8F088002B1D52 /* ContentViewModel.swift in Sources */,
 				CEC5BB3F2DF8EC52002B1D52 /* CheckersAppApp.swift in Sources */,
 				CEC5BB402DF8EC52002B1D52 /* ContentView.swift in Sources */,
+				CEC5BB432DF8F026002B1D52 /* MPCManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +309,7 @@
 				DEVELOPMENT_TEAM = Q5L7D25SC3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CheckersApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -300,6 +343,7 @@
 				DEVELOPMENT_TEAM = Q5L7D25SC3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CheckersApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
