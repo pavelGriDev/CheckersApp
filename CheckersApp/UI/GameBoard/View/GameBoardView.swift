@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct GameBoardView: View {
     
-    @StateObject private var vm = ContentViewModel()
+    @StateObject private var vm = GameBoardViewModel()
     let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 8)
     @State private var selectedCell: (row: Int, col: Int)? = nil
     var body: some View {
@@ -102,7 +102,9 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    NavigationView {
+        GameBoardView()
+    }
 }
 
 

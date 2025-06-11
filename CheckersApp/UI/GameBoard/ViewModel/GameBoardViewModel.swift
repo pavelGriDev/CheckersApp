@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ContentViewModel: ObservableObject {
+final class GameBoardViewModel: ObservableObject {
     @Published var board: [[CheckerType?]] = Array(repeating: Array(repeating: nil, count: 8), count: 8)
     
     @Published var message = "_"

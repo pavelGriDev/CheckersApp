@@ -9,22 +9,26 @@
 /* Begin PBXBuildFile section */
 		CE9FFC0E2DF9C64E0061BE55 /* SessionConnectState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC0D2DF9C64E0061BE55 /* SessionConnectState.swift */; };
 		CE9FFC112DF9C9790061BE55 /* ConnectionStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC102DF9C9790061BE55 /* ConnectionStateView.swift */; };
+		CE9FFC172DF9FFDC0061BE55 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC162DF9FFDC0061BE55 /* RootView.swift */; };
+		CE9FFC1A2DFA01D90061BE55 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC192DFA01D90061BE55 /* MainButton.swift */; };
 		CEC5BB3F2DF8EC52002B1D52 /* CheckersAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */; };
-		CEC5BB402DF8EC52002B1D52 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB3D2DF8EC52002B1D52 /* ContentView.swift */; };
+		CEC5BB402DF8EC52002B1D52 /* GameBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB3D2DF8EC52002B1D52 /* GameBoardView.swift */; };
 		CEC5BB412DF8EC52002B1D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */; };
 		CEC5BB432DF8F026002B1D52 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB422DF8F026002B1D52 /* MPCManager.swift */; };
-		CEC5BB492DF8F088002B1D52 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB482DF8F088002B1D52 /* ContentViewModel.swift */; };
+		CEC5BB492DF8F088002B1D52 /* GameBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB482DF8F088002B1D52 /* GameBoardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE9FFC0D2DF9C64E0061BE55 /* SessionConnectState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionConnectState.swift; sourceTree = "<group>"; };
 		CE9FFC102DF9C9790061BE55 /* ConnectionStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStateView.swift; sourceTree = "<group>"; };
+		CE9FFC162DF9FFDC0061BE55 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		CE9FFC192DFA01D90061BE55 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		CEC5BB2D2DF8E2ED002B1D52 /* CheckersApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckersApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckersAppApp.swift; sourceTree = "<group>"; };
-		CEC5BB3D2DF8EC52002B1D52 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CEC5BB3D2DF8EC52002B1D52 /* GameBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardView.swift; sourceTree = "<group>"; };
 		CEC5BB422DF8F026002B1D52 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
-		CEC5BB482DF8F088002B1D52 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		CEC5BB482DF8F088002B1D52 /* GameBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardViewModel.swift; sourceTree = "<group>"; };
 		CEC5BB4A2DF98726002B1D52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,6 +57,48 @@
 				CE9FFC102DF9C9790061BE55 /* ConnectionStateView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		CE9FFC122DF9FF660061BE55 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				CE9FFC152DF9FFC70061BE55 /* ViewModel */,
+				CE9FFC142DF9FFC20061BE55 /* View */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		CE9FFC132DF9FF710061BE55 /* GameBoard */ = {
+			isa = PBXGroup;
+			children = (
+				CE9FFC0C2DF9C6340061BE55 /* Model */,
+				CEC5BB462DF8F049002B1D52 /* ViewModel */,
+				CEC5BB452DF8F040002B1D52 /* View */,
+			);
+			path = GameBoard;
+			sourceTree = "<group>";
+		};
+		CE9FFC142DF9FFC20061BE55 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE9FFC162DF9FFDC0061BE55 /* RootView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE9FFC152DF9FFC70061BE55 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE9FFC182DFA01CB0061BE55 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CE9FFC192DFA01D90061BE55 /* MainButton.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		CEC5BB242DF8E2ED002B1D52 = {
@@ -86,9 +132,9 @@
 		CEC5BB442DF8F036002B1D52 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CE9FFC0C2DF9C6340061BE55 /* Model */,
-				CEC5BB462DF8F049002B1D52 /* ViewModel */,
-				CEC5BB452DF8F040002B1D52 /* View */,
+				CE9FFC182DFA01CB0061BE55 /* Common */,
+				CE9FFC122DF9FF660061BE55 /* Root */,
+				CE9FFC132DF9FF710061BE55 /* GameBoard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -97,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				CE9FFC0F2DF9C7990061BE55 /* Components */,
-				CEC5BB3D2DF8EC52002B1D52 /* ContentView.swift */,
+				CEC5BB3D2DF8EC52002B1D52 /* GameBoardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -105,7 +151,7 @@
 		CEC5BB462DF8F049002B1D52 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				CEC5BB482DF8F088002B1D52 /* ContentViewModel.swift */,
+				CEC5BB482DF8F088002B1D52 /* GameBoardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -190,10 +236,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEC5BB492DF8F088002B1D52 /* ContentViewModel.swift in Sources */,
+				CEC5BB492DF8F088002B1D52 /* GameBoardViewModel.swift in Sources */,
 				CE9FFC0E2DF9C64E0061BE55 /* SessionConnectState.swift in Sources */,
 				CEC5BB3F2DF8EC52002B1D52 /* CheckersAppApp.swift in Sources */,
-				CEC5BB402DF8EC52002B1D52 /* ContentView.swift in Sources */,
+				CEC5BB402DF8EC52002B1D52 /* GameBoardView.swift in Sources */,
+				CE9FFC1A2DFA01D90061BE55 /* MainButton.swift in Sources */,
+				CE9FFC172DF9FFDC0061BE55 /* RootView.swift in Sources */,
 				CE9FFC112DF9C9790061BE55 /* ConnectionStateView.swift in Sources */,
 				CEC5BB432DF8F026002B1D52 /* MPCManager.swift in Sources */,
 			);
