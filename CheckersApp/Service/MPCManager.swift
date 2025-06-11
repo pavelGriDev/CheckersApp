@@ -20,7 +20,7 @@ final class MultipeerSessionManager: NSObject {
     
     private let serviceType = "checkers"
     
-    var stateHandler: ((String) -> Void)?
+    var stateHandler: ((MCSessionState) -> Void)?
     var messageHandler: ((String) -> Void)?
     
     func setup() {
@@ -85,16 +85,7 @@ final class MultipeerSessionManager: NSObject {
 
 extension MultipeerSessionManager: MCSessionDelegate {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        switch state {
-        case .notConnected:
-            stateHandler?("Not Connected.")
-        case .connecting:
-            stateHandler?("connecting...")
-        case .connected:
-            stateHandler?("Connected.")
-        @unknown default:
-            fatalError() // show error
-        }
+        stateHandler?(state)
     }
     // когда приходит сообщение от другога пира
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {

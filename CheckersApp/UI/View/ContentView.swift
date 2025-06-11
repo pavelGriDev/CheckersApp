@@ -13,12 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                
-                Text(vm.connectionStatus)
-                    .foregroundStyle(.secondary)
-            }
+            ConnectionStateView(state: $vm.connectionState)
             
             Spacer()
             

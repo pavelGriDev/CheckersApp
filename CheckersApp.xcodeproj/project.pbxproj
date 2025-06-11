@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE9FFC0E2DF9C64E0061BE55 /* SessionConnectState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC0D2DF9C64E0061BE55 /* SessionConnectState.swift */; };
+		CE9FFC112DF9C9790061BE55 /* ConnectionStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC102DF9C9790061BE55 /* ConnectionStateView.swift */; };
 		CEC5BB3F2DF8EC52002B1D52 /* CheckersAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */; };
 		CEC5BB402DF8EC52002B1D52 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB3D2DF8EC52002B1D52 /* ContentView.swift */; };
 		CEC5BB412DF8EC52002B1D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE9FFC0D2DF9C64E0061BE55 /* SessionConnectState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionConnectState.swift; sourceTree = "<group>"; };
+		CE9FFC102DF9C9790061BE55 /* ConnectionStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStateView.swift; sourceTree = "<group>"; };
 		CEC5BB2D2DF8E2ED002B1D52 /* CheckersApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckersApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckersAppApp.swift; sourceTree = "<group>"; };
@@ -35,6 +39,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE9FFC0C2DF9C6340061BE55 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE9FFC0D2DF9C64E0061BE55 /* SessionConnectState.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE9FFC0F2DF9C7990061BE55 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CE9FFC102DF9C9790061BE55 /* ConnectionStateView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		CEC5BB242DF8E2ED002B1D52 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +86,7 @@
 		CEC5BB442DF8F036002B1D52 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CE9FFC0C2DF9C6340061BE55 /* Model */,
 				CEC5BB462DF8F049002B1D52 /* ViewModel */,
 				CEC5BB452DF8F040002B1D52 /* View */,
 			);
@@ -75,6 +96,7 @@
 		CEC5BB452DF8F040002B1D52 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE9FFC0F2DF9C7990061BE55 /* Components */,
 				CEC5BB3D2DF8EC52002B1D52 /* ContentView.swift */,
 			);
 			path = View;
@@ -169,8 +191,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC5BB492DF8F088002B1D52 /* ContentViewModel.swift in Sources */,
+				CE9FFC0E2DF9C64E0061BE55 /* SessionConnectState.swift in Sources */,
 				CEC5BB3F2DF8EC52002B1D52 /* CheckersAppApp.swift in Sources */,
 				CEC5BB402DF8EC52002B1D52 /* ContentView.swift in Sources */,
+				CE9FFC112DF9C9790061BE55 /* ConnectionStateView.swift in Sources */,
 				CEC5BB432DF8F026002B1D52 /* MPCManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

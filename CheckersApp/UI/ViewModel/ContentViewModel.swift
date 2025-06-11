@@ -10,14 +10,23 @@ import Foundation
 final class ContentViewModel: ObservableObject {
     
     @Published var message = "_"
-    @Published var connectionStatus = "_"
+    @Published var connectionState: SessionConnectState = .none
     
     private let multipeerManager = MultipeerSessionManager()
     
     init() {
         self.multipeerManager.stateHandler = { [weak self] state in
             DispatchQueue.main.async {
-                self?.connectionStatus = state
+                switch state {
+                case .notConnected:
+                    self?.connectionState = .notConnected
+                case .connecting:
+                    self?.connectionState = .connecting
+                case .connected:
+                    self?.connectionState = .connected
+                @unknown default:
+                    self?.connectionState = .none
+                }
             }
         }
         
