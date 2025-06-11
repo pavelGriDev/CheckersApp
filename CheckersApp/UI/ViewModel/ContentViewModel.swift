@@ -8,6 +8,7 @@
 import Foundation
 
 final class ContentViewModel: ObservableObject {
+    @Published var board: [[CheckerType?]] = Array(repeating: Array(repeating: nil, count: 8), count: 8)
     
     @Published var message = "_"
     @Published var connectionState: SessionConnectState = .none
@@ -38,7 +39,8 @@ final class ContentViewModel: ObservableObject {
     }
     
     func onAppear() {
-        multipeerManager.setup()
+//        multipeerManager.setup()
+        setupInitialBoard()
     }
     
     func connectAction() {
@@ -52,5 +54,21 @@ final class ContentViewModel: ObservableObject {
     func sendMessageAction() {
         multipeerManager.send("chupacabra")
     }
+    
+    private func setupInitialBoard() {
+         // Расставляем чёрные шашки (игрок снизу)
+         for row in 0..<3 {
+             for col in 0..<8 where (row + col) % 2 != 0 {
+                 board[row][col] = .black
+             }
+         }
+         
+         // Расставляем белые шашки (игрок сверху)
+         for row in 5..<8 {
+             for col in 0..<8 where (row + col) % 2 != 0 {
+                 board[row][col] = .white
+             }
+         }
+     }
     
 }
