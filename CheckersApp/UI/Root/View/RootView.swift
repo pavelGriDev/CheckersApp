@@ -30,7 +30,7 @@ struct RootView: View {
             .navigationDestination(for: Router.self) { value in
                 switch value {
                 case .gameBoard:
-                    GameBoardView()
+                    CheckersBoardView()
                 }
             }
         }
