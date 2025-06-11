@@ -38,6 +38,8 @@ struct CheckersBoardView: View {
                         if let checker = game.board[row][col] {
                             CheckerView(type: checker)
                                 .onTapGesture {
+                                    // selected checker
+                                    selectedCell = .init(row: row, col: col)
                                     print("Checker - row: \(row), col: \(col)")
                                 }
                         } else {
@@ -46,6 +48,11 @@ struct CheckersBoardView: View {
                                 .opacity(0.001)
                                 .onTapGesture {
                                     print("Empty - row: \(row), col: \(col)")
+                                    if let from = selectedCell {
+                                        game.board[row][col] = game.board[from.row][from.col]
+                                        game.board[from.row][from.col] = nil
+                                        selectedCell = nil
+                                    }
                                 }
                         }
                     }
