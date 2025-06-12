@@ -12,7 +12,15 @@ struct BoardPosition: Equatable {
     let col: Int
 }
 
+enum PlayersColor: Hashable {
+    case white
+    case black
+    case none
+}
+
 struct CheckersBoardView: View {
+    let playersColor: PlayersColor
+    
     @StateObject private var game = CheckersGameEngine()
     
     @State private var selectedCell: BoardPosition? = nil
@@ -69,14 +77,8 @@ struct CheckersBoardView: View {
         }
         .backgroundColor()
     }
-    
-    private func moveSelected(from: (row: Int, col: Int), to: (row: Int, col: Int)) {
-        // TODO: Проверка правил хода
-        game.board[to.row][to.col] = game.board[from.row][from.col]
-        game.board[from.row][from.col] = nil
-    }
 }
 
 #Preview {
-    CheckersBoardView()
+    CheckersBoardView(playersColor: .white)
 }

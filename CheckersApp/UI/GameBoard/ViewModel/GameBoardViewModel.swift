@@ -16,7 +16,6 @@ final class CheckersGameEngine: ObservableObject {
         setupInitialBoard()
     }
     
-    
     private func setupInitialBoard() {
         // Чёрные шашки (игрок снизу)
         for row in 0..<3 {

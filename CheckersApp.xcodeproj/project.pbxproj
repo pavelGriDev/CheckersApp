@@ -14,6 +14,7 @@
 		CE9FFC1C2DFA04590061BE55 /* CheckerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC1B2DFA04590061BE55 /* CheckerType.swift */; };
 		CE9FFC1E2DFA04760061BE55 /* CheckerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC1D2DFA04760061BE55 /* CheckerView.swift */; };
 		CE9FFC212DFA09080061BE55 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC202DFA09080061BE55 /* View.swift */; };
+		CE9FFC242DFAE2300061BE55 /* MatchSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC232DFAE2300061BE55 /* MatchSetup.swift */; };
 		CEC5BB3F2DF8EC52002B1D52 /* CheckersAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */; };
 		CEC5BB402DF8EC52002B1D52 /* CheckersBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB3D2DF8EC52002B1D52 /* CheckersBoardView.swift */; };
 		CEC5BB412DF8EC52002B1D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		CE9FFC1B2DFA04590061BE55 /* CheckerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerType.swift; sourceTree = "<group>"; };
 		CE9FFC1D2DFA04760061BE55 /* CheckerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerView.swift; sourceTree = "<group>"; };
 		CE9FFC202DFA09080061BE55 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		CE9FFC232DFAE2300061BE55 /* MatchSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchSetup.swift; sourceTree = "<group>"; };
 		CEC5BB2D2DF8E2ED002B1D52 /* CheckersApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckersApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckersAppApp.swift; sourceTree = "<group>"; };
@@ -70,7 +72,7 @@
 		CE9FFC122DF9FF660061BE55 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				CE9FFC142DF9FFC20061BE55 /* View */,
+				CE9FFC162DF9FFDC0061BE55 /* RootView.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -83,14 +85,6 @@
 				CEC5BB452DF8F040002B1D52 /* View */,
 			);
 			path = GameBoard;
-			sourceTree = "<group>";
-		};
-		CE9FFC142DF9FFC20061BE55 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				CE9FFC162DF9FFDC0061BE55 /* RootView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		CE9FFC182DFA01CB0061BE55 /* Common */ = {
@@ -107,6 +101,14 @@
 				CE9FFC202DFA09080061BE55 /* View.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		CE9FFC222DFAE2200061BE55 /* MatchSetup */ = {
+			isa = PBXGroup;
+			children = (
+				CE9FFC232DFAE2300061BE55 /* MatchSetup.swift */,
+			);
+			path = MatchSetup;
 			sourceTree = "<group>";
 		};
 		CEC5BB242DF8E2ED002B1D52 = {
@@ -141,6 +143,7 @@
 		CEC5BB442DF8F036002B1D52 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CE9FFC222DFAE2200061BE55 /* MatchSetup */,
 				CE9FFC182DFA01CB0061BE55 /* Common */,
 				CE9FFC122DF9FF660061BE55 /* Root */,
 				CE9FFC132DF9FF710061BE55 /* GameBoard */,
@@ -246,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC5BB492DF8F088002B1D52 /* GameBoardViewModel.swift in Sources */,
+				CE9FFC242DFAE2300061BE55 /* MatchSetup.swift in Sources */,
 				CE9FFC0E2DF9C64E0061BE55 /* SessionConnectState.swift in Sources */,
 				CE9FFC1E2DFA04760061BE55 /* CheckerView.swift in Sources */,
 				CEC5BB3F2DF8EC52002B1D52 /* CheckersAppApp.swift in Sources */,
