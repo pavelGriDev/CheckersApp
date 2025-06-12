@@ -17,20 +17,52 @@ final class CheckersBoardViewModel: ObservableObject {
     init(mcpManager: MPCManager = MultipeerSessionManager() ) {
         self.mcpManager = mcpManager
         
+        self.mcpManager.stateHandler = { [weak self] state in
+            guard let self else { return }
+            DispatchQueue.main.async {
+                switch state { // нужно потом сделать лайбл
+                case .notConnected:
+                    print("notConnected.")
+                case .connecting:
+                    print("connecting...")
+                case .connected:
+                    print("connected")
+                    self.sendSetupMessage()
+                default:
+                    fatalError()
+                }
+            }
+        }
+        
         setupInitialBoard()
     }
     
     func onAppear() {
-//        mcpManager.setup()
+        mcpManager.setup()
+
+        if playersColor != .none {
+            mcpManager.connect()
+        }
     }
     
     func onDisappear() {
-        
+        mcpManager.disconnect()
     }
     
     func set(_ playersColor: PlayersColor) {
         self.playersColor = playersColor
     }
+    
+    func sendSetupMessage() {
+        guard playersColor != .none else { return }
+        // нужно передать первоначальные настройки
+        // цвет противника
+        // указать кто начинает игру
+        
+        mcpManager.send("Привет мир")
+    }
+    
+    
     
     private func setupInitialBoard() {
         // Чёрные шашки (игрок снизу)
