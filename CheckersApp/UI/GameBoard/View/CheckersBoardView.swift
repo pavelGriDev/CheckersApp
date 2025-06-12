@@ -21,7 +21,7 @@ enum PlayersColor: Hashable {
 struct CheckersBoardView: View {
     let playersColor: PlayersColor
     
-    @StateObject private var game = CheckersGameEngine()
+    @StateObject private var vm = CheckersBoardViewModel()
     
     @State private var selectedCell: BoardPosition? = nil
     @State private var animatedPosition: BoardPosition? = nil
@@ -43,7 +43,7 @@ struct CheckersBoardView: View {
                         
                         
                         // Шашка (если есть)
-                        if let checker = game.board[row][col] {
+                        if let checker = vm.board[row][col] {
                             CheckerView(type: checker)
                                 .onTapGesture {
                                     // selected checker
@@ -57,8 +57,8 @@ struct CheckersBoardView: View {
                                 .onTapGesture {
                                     print("Empty - row: \(row), col: \(col)")
                                     if let from = selectedCell {
-                                        game.board[row][col] = game.board[from.row][from.col]
-                                        game.board[from.row][from.col] = nil
+                                        vm.board[row][col] = vm.board[from.row][from.col]
+                                        vm.board[from.row][from.col] = nil
                                         selectedCell = nil
                                     }
                                 }
@@ -76,6 +76,11 @@ struct CheckersBoardView: View {
             .padding()
         }
         .backgroundColor()
+        .onAppear {
+            vm.set(playersColor)
+            vm.onAppear()
+        }
+        .onDisappear { vm.onDisappear() }
     }
 }
 

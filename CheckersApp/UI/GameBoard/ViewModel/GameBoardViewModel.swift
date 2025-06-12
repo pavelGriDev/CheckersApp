@@ -7,13 +7,29 @@
 
 import Foundation
 
-final class CheckersGameEngine: ObservableObject {
+final class CheckersBoardViewModel: ObservableObject {
     @Published var board: [[CheckerType?]] = Array(repeating: Array(repeating: nil, count: 8), count: 8)
     
-    @Published var currentPlayer: CheckerType = .black
+    private var playersColor: PlayersColor = .none
     
-    init() {
+    private let mcpManager: MPCManager
+    
+    init(mcpManager: MPCManager = MultipeerSessionManager() ) {
+        self.mcpManager = mcpManager
+        
         setupInitialBoard()
+    }
+    
+    func onAppear() {
+//        mcpManager.setup()
+    }
+    
+    func onDisappear() {
+        
+    }
+    
+    func set(_ playersColor: PlayersColor) {
+        self.playersColor = playersColor
     }
     
     private func setupInitialBoard() {

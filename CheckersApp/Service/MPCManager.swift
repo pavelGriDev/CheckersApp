@@ -8,11 +8,16 @@
 import Foundation
 import MultipeerConnectivity
 
-protocol MPCManager {
-    
+protocol MPCManager: AnyObject {
+    var stateHandler: ((MCSessionState) -> Void)? { get set }
+    var messageHandler: ((String) -> Void)? { get set }
+    func setup()
+    func connect()
+    func disconnect()
+    func send(_ message: String)
 }
 
-final class MultipeerSessionManager: NSObject {
+final class MultipeerSessionManager: NSObject, MPCManager {
     private var session: MCSession?
     private let peerID = MCPeerID(displayName: UIDevice.current.name)
     private var browser: MCNearbyServiceBrowser?
@@ -70,7 +75,7 @@ final class MultipeerSessionManager: NSObject {
         session?.disconnect()
     }
     
-    func sendMessage(_ message: String) {
+    private func sendMessage(_ message: String) {
         guard let peers = session?.connectedPeers,
               let data = try? JSONEncoder().encode(message) else { return }
         do {

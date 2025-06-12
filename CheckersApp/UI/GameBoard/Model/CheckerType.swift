@@ -13,3 +13,4 @@ enum CheckerType {
     case blackKing
     case whiteKing
 }
+
