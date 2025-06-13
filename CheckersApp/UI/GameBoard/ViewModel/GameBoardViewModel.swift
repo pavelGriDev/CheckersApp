@@ -10,42 +10,60 @@ import Foundation
 final class CheckersBoardViewModel: ObservableObject {
     @Published var board: [[CheckerType?]] = Array(repeating: Array(repeating: nil, count: 8), count: 8)
     
-    private var playersColor: PlayersColor = .none
+    @Published var connectState: String = ""
+    @Published var playersColorTitle: String = ""
+    
+    private let isHost: Bool
+    private var playersColor: PlayersColor {
+        didSet {
+            DispatchQueue.main.async {
+                self.playersColorTitle = self.playersColor.asString
+            }
+        }
+    }
+    private var isMyTurn: Bool = false
     
     private let mcpManager: MPCManager
     private let codableManager: CodableManager
     
     init(
+        color: PlayersColor,
+        isHost: Bool,
         mcpManager: MPCManager = MultipeerSessionManager(),
         codableManager: CodableManager = CodableManagerImp()
     ) {
+        self.playersColor = color
+        self.isHost = isHost
         self.mcpManager = mcpManager
         self.codableManager = codableManager
         
         self.mcpManager.stateHandler = { [weak self] state in
             guard let self else { return }
             DispatchQueue.main.async {
-                switch state { // нужно потом сделать лайбл
+                switch state {
                 case .notConnected:
-                    print("notConnected.")
+                    self.connectState = "notConnected."
                 case .connecting:
-                    print("connecting...")
+                    self.connectState = "connecting..."
                 case .connected:
-                    print("connected")
-                    self.sendSetupMessage()
+                    self.connectState = "connected"
+                    self.sendStartMessage()
                 default:
                     fatalError()
                 }
             }
         }
         
-        setupInitialBoard()
+        self.mcpManager.messageHandler = { [weak self] data in
+            guard let self else { return }
+            messageHandler(data)
+        }
     }
     
     func onAppear() {
         mcpManager.setup()
 
-        if playersColor != .none {
+        if isHost {
             mcpManager.connect()
         }
     }
@@ -54,17 +72,41 @@ final class CheckersBoardViewModel: ObservableObject {
         mcpManager.disconnect()
     }
     
-    func set(_ playersColor: PlayersColor) {
-        self.playersColor = playersColor
+    func sendStartMessage() {
+        guard isHost else { return }
+        
+        let opponentsColor: PlayersColor = playersColor == .white ? .black : .white
+        let startModel = StartGame(typeIdentifier: .start, playersColor: opponentsColor)
+        
+        do {
+            let data = try codableManager.encoded(from: startModel)
+            try mcpManager.send(data)
+            startSetup(color: playersColor)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
-    func sendSetupMessage() {
-        guard playersColor != .none else { return }
-        // нужно передать первоначальные настройки
-        // цвет противника
-        // указать кто начинает игру
+    private func messageHandler(_ data: Data) {
+        let result: Transmissible
         
-//        mcpManager.send("Привет мир")
+        do {
+            result = try codableManager.decode(from: data)
+        } catch {
+            print(error.localizedDescription)
+            return
+        }
+        
+        switch result {
+        case let startModel as StartGame:
+            startSetup(color: startModel.playersColor)
+        case let moveModel as GameMove:
+            break
+        case let endModel as EndGame:
+            break
+        default:
+            break
+        }
     }
     
     
@@ -86,13 +128,14 @@ final class CheckersBoardViewModel: ObservableObject {
     }
 }
 
-//struct StartGameMessage: Codable {
-//    let playersColor: PlayersColor
-//}
-//
-//struct PlayerMoveMessage: Codable {
-//    let from: GameMove
-//    let to: GameMove
-//    let captured: [GameMove]
-//    let becameKing: Bool
-//}
+// MARK: Start game
+
+extension CheckersBoardViewModel {
+    private func startSetup(color: PlayersColor) {
+        DispatchQueue.main.async {
+            self.setupInitialBoard()
+            self.isMyTurn = self.playersColor == .white
+            self.playersColor = color
+        }
+    }
+}

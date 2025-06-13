@@ -46,4 +46,15 @@ enum PlayersColor: Hashable, Codable {
     case white
     case black
     case none
+    
+    var asString: String {
+        switch self {
+        case .white:
+            "White"
+        case .black:
+            "Black"
+        case .none:
+            ""
+        }
+    }
 }

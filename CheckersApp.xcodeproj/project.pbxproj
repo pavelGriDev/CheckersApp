@@ -127,8 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				CEC5BB3E2DF8EC52002B1D52 /* CheckersApp */,
-				CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */,
-				CEC5BB4A2DF98726002B1D52 /* Info.plist */,
 				CEC5BB2E2DF8E2ED002B1D52 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -149,6 +147,8 @@
 				CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */,
 				CEC5BB472DF8F057002B1D52 /* Service */,
 				CEC5BB442DF8F036002B1D52 /* UI */,
+				CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */,
+				CEC5BB4A2DF98726002B1D52 /* Info.plist */,
 			);
 			path = CheckersApp;
 			sourceTree = "<group>";

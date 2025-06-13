@@ -23,11 +23,11 @@ struct MatchSetup: View {
             
             VStack(spacing: 20) {
                 MainButton(title: "White", color: .white, textColor: .black) {
-                    path.append(Router.gameBoard(.white))
+                    path.append(Router.gameBoard(color: .white, isHost: true))
                 }
                 
                 MainButton(title: "Black", color: .black) {
-                    path.append(Router.gameBoard(.black))
+                    path.append(Router.gameBoard(color: .black, isHost: true))
                 }
             }
         }

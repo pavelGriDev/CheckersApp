@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct CheckersBoardView: View {
-    let playersColor: PlayersColor
     
-    @StateObject private var vm = CheckersBoardViewModel()
+    @StateObject private var vm: CheckersBoardViewModel
+    
+    init(color: PlayersColor, isHost: Bool) {
+        _vm = StateObject(wrappedValue: CheckersBoardViewModel(color: color, isHost: isHost))
+    }
     
     @State private var selectedCell: BoardPosition? = nil
     @State private var animatedPosition: BoardPosition? = nil
@@ -19,6 +22,18 @@ struct CheckersBoardView: View {
     
     var body: some View {
         VStack {
+            
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("State: \(vm.connectState)")
+                        .padding(.bottom, 10)
+                    Text("Player: \(vm.playersColorTitle)")
+                }
+                
+                Spacer()
+            }
+            .padding(.bottom, 10)
+            
             LazyVGrid(columns: columns, spacing: 0) {
                 ForEach(0..<64, id: \.self) { index in
                     let row = index / 8
@@ -62,17 +77,14 @@ struct CheckersBoardView: View {
                 }
             }
             .aspectRatio(1, contentMode: .fit)
-            .padding()
         }
+        .padding()
         .backgroundColor()
-        .onAppear {
-            vm.set(playersColor)
-            vm.onAppear()
-        }
+        .onAppear { vm.onAppear() }
         .onDisappear { vm.onDisappear() }
     }
 }
 
 #Preview {
-    CheckersBoardView(playersColor: .white)
+    CheckersBoardView(color: .white, isHost: true)
 }

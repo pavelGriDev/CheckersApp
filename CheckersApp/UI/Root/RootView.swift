@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum Router: Hashable {
-    case gameBoard(PlayersColor)
+    case gameBoard(color: PlayersColor, isHost: Bool)
     case matchSetup
 }
 
@@ -38,7 +38,7 @@ struct RootView: View {
                         color: .white,
                         textColor: .black
                     ) {
-                        path.append(Router.gameBoard(.none))
+                        path.append(Router.gameBoard(color: .none, isHost: false))
                     }
                 }
             }
@@ -46,8 +46,8 @@ struct RootView: View {
             .backgroundColor()
             .navigationDestination(for: Router.self) { value in
                 switch value {
-                case .gameBoard(let selectedColor ):
-                    CheckersBoardView(playersColor: selectedColor)
+                case let .gameBoard(selectedColor, value):
+                    CheckersBoardView(color: selectedColor, isHost: value)
                 case .matchSetup:
                     MatchSetup(path: $path)
                 }
