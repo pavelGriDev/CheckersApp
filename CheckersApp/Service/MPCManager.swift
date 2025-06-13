@@ -10,11 +10,11 @@ import MultipeerConnectivity
 
 protocol MPCManager: AnyObject {
     var stateHandler: ((MCSessionState) -> Void)? { get set }
-    var messageHandler: ((String) -> Void)? { get set }
+    var messageHandler: ((Data) -> Void)? { get set }
     func setup()
     func connect()
     func disconnect()
-    func send(_ message: String)
+    func send(_ data: Data) throws
 }
 
 final class MultipeerSessionManager: NSObject, MPCManager {
@@ -26,7 +26,7 @@ final class MultipeerSessionManager: NSObject, MPCManager {
     private let serviceType = "checkers"
     
     var stateHandler: ((MCSessionState) -> Void)?
-    var messageHandler: ((String) -> Void)?
+    var messageHandler: ((Data) -> Void)?
     
     func setup() {
         session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .none)
@@ -45,8 +45,9 @@ final class MultipeerSessionManager: NSObject, MPCManager {
         startBrowser()
     }
     
-    func send(_ message: String) {
-        sendMessage("Hey! \(message). From \(UIDevice.current.name)")
+    func send(_ data: Data) throws {
+        guard let peers = session?.connectedPeers else { return }
+        try session?.send(data, toPeers: peers, with: .reliable)
     }
     
     private func startAdvertiser() {
@@ -74,16 +75,6 @@ final class MultipeerSessionManager: NSObject, MPCManager {
         }
         session?.disconnect()
     }
-    
-    private func sendMessage(_ message: String) {
-        guard let peers = session?.connectedPeers,
-              let data = try? JSONEncoder().encode(message) else { return }
-        do {
-            try session?.send(data, toPeers: peers, with: .reliable)
-        } catch {
-            print("Error: \(error.localizedDescription)")
-        }
-    }
 }
 
 // MARK: MCSessionDelegate
@@ -94,8 +85,7 @@ extension MultipeerSessionManager: MCSessionDelegate {
     }
     // когда приходит сообщение от другога пира
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        guard let message = try? JSONDecoder().decode(String.self, from: data) else { return }
-        messageHandler?(message)
+        messageHandler?(data)
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) { }

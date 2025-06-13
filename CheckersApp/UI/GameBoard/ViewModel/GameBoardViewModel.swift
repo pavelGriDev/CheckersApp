@@ -13,9 +13,14 @@ final class CheckersBoardViewModel: ObservableObject {
     private var playersColor: PlayersColor = .none
     
     private let mcpManager: MPCManager
+    private let codableManager: CodableManager
     
-    init(mcpManager: MPCManager = MultipeerSessionManager() ) {
+    init(
+        mcpManager: MPCManager = MultipeerSessionManager(),
+        codableManager: CodableManager = CodableManagerImp()
+    ) {
         self.mcpManager = mcpManager
+        self.codableManager = codableManager
         
         self.mcpManager.stateHandler = { [weak self] state in
             guard let self else { return }
@@ -59,7 +64,7 @@ final class CheckersBoardViewModel: ObservableObject {
         // цвет противника
         // указать кто начинает игру
         
-        mcpManager.send("Привет мир")
+//        mcpManager.send("Привет мир")
     }
     
     
@@ -81,3 +86,13 @@ final class CheckersBoardViewModel: ObservableObject {
     }
 }
 
+//struct StartGameMessage: Codable {
+//    let playersColor: PlayersColor
+//}
+//
+//struct PlayerMoveMessage: Codable {
+//    let from: GameMove
+//    let to: GameMove
+//    let captured: [GameMove]
+//    let becameKing: Bool
+//}

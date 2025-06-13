@@ -15,6 +15,8 @@
 		CE9FFC1E2DFA04760061BE55 /* CheckerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC1D2DFA04760061BE55 /* CheckerView.swift */; };
 		CE9FFC212DFA09080061BE55 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC202DFA09080061BE55 /* View.swift */; };
 		CE9FFC242DFAE2300061BE55 /* MatchSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC232DFAE2300061BE55 /* MatchSetup.swift */; };
+		CE9FFC262DFC49460061BE55 /* CodableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC252DFC49460061BE55 /* CodableManager.swift */; };
+		CE9FFC292DFC4BDD0061BE55 /* TransmissionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC282DFC4BDD0061BE55 /* TransmissionModel.swift */; };
 		CEC5BB3F2DF8EC52002B1D52 /* CheckersAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */; };
 		CEC5BB402DF8EC52002B1D52 /* CheckersBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB3D2DF8EC52002B1D52 /* CheckersBoardView.swift */; };
 		CEC5BB412DF8EC52002B1D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */; };
@@ -31,13 +33,15 @@
 		CE9FFC1D2DFA04760061BE55 /* CheckerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerView.swift; sourceTree = "<group>"; };
 		CE9FFC202DFA09080061BE55 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		CE9FFC232DFAE2300061BE55 /* MatchSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchSetup.swift; sourceTree = "<group>"; };
+		CE9FFC252DFC49460061BE55 /* CodableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableManager.swift; sourceTree = "<group>"; };
+		CE9FFC282DFC4BDD0061BE55 /* TransmissionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmissionModel.swift; sourceTree = "<group>"; };
 		CEC5BB2D2DF8E2ED002B1D52 /* CheckersApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckersApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckersAppApp.swift; sourceTree = "<group>"; };
 		CEC5BB3D2DF8EC52002B1D52 /* CheckersBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckersBoardView.swift; sourceTree = "<group>"; };
 		CEC5BB422DF8F026002B1D52 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
 		CEC5BB482DF8F088002B1D52 /* GameBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardViewModel.swift; sourceTree = "<group>"; };
-		CEC5BB4A2DF98726002B1D52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CEC5BB4A2DF98726002B1D52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,10 +115,20 @@
 			path = MatchSetup;
 			sourceTree = "<group>";
 		};
+		CE9FFC272DFC4B940061BE55 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				CE9FFC282DFC4BDD0061BE55 /* TransmissionModel.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		CEC5BB242DF8E2ED002B1D52 = {
 			isa = PBXGroup;
 			children = (
 				CEC5BB3E2DF8EC52002B1D52 /* CheckersApp */,
+				CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */,
+				CEC5BB4A2DF98726002B1D52 /* Info.plist */,
 				CEC5BB2E2DF8E2ED002B1D52 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +144,8 @@
 		CEC5BB3E2DF8EC52002B1D52 /* CheckersApp */ = {
 			isa = PBXGroup;
 			children = (
+				CE9FFC272DFC4B940061BE55 /* Entity */,
 				CE9FFC1F2DFA08F70061BE55 /* Extension */,
-				CEC5BB4A2DF98726002B1D52 /* Info.plist */,
-				CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */,
 				CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */,
 				CEC5BB472DF8F057002B1D52 /* Service */,
 				CEC5BB442DF8F036002B1D52 /* UI */,
@@ -172,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				CEC5BB422DF8F026002B1D52 /* MPCManager.swift */,
+				CE9FFC252DFC49460061BE55 /* CodableManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -250,8 +264,10 @@
 			files = (
 				CEC5BB492DF8F088002B1D52 /* GameBoardViewModel.swift in Sources */,
 				CE9FFC242DFAE2300061BE55 /* MatchSetup.swift in Sources */,
+				CE9FFC262DFC49460061BE55 /* CodableManager.swift in Sources */,
 				CE9FFC0E2DF9C64E0061BE55 /* SessionConnectState.swift in Sources */,
 				CE9FFC1E2DFA04760061BE55 /* CheckerView.swift in Sources */,
+				CE9FFC292DFC4BDD0061BE55 /* TransmissionModel.swift in Sources */,
 				CEC5BB3F2DF8EC52002B1D52 /* CheckersAppApp.swift in Sources */,
 				CEC5BB402DF8EC52002B1D52 /* CheckersBoardView.swift in Sources */,
 				CE9FFC1A2DFA01D90061BE55 /* MainButton.swift in Sources */,

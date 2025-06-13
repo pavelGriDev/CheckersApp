@@ -7,17 +7,6 @@
 
 import SwiftUI
 
-struct BoardPosition: Equatable {
-    let row: Int
-    let col: Int
-}
-
-enum PlayersColor: Hashable {
-    case white
-    case black
-    case none
-}
-
 struct CheckersBoardView: View {
     let playersColor: PlayersColor
     
