@@ -12,5 +12,14 @@ enum CheckerType {
     case white
     case blackKing
     case whiteKing
+    
+    var owner: PlayersColor {
+            switch self {
+            case .black, .blackKing:
+                return .black
+            case .white, .whiteKing:
+                return .white
+            }
+        }
 }
 

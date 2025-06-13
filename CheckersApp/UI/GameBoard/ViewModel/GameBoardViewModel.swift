@@ -19,6 +19,10 @@ final class CheckersBoardViewModel: ObservableObject {
     @Published var currentTurnStatus: TurnStatus = .waiting
     
     var playersColor: PlayersColor
+    
+    
+    @Published var selectedCell: BoardPosition? = nil
+    
     private let isHost: Bool
     private var isMyTurn: Bool = false {
         didSet {
@@ -142,5 +146,27 @@ extension CheckersBoardViewModel {
                 board[row][col] = .white
             }
         }
+    }
+}
+
+// MARK: Game
+
+extension CheckersBoardViewModel {
+    func selectChecker(at position: BoardPosition) {
+        guard isMyTurn else { return }
+        guard let checker = board[position.row][position.col] else { return }
+        guard checker.owner == playersColor else { return }
+        
+        selectedCell = position
+        // нужно показать допустимые ходы
+    }
+    
+    func makeMove(at position: BoardPosition) {
+        guard isMyTurn else { return }
+        guard let from = selectedCell else { return }
+        
+        // vm.board[row][col] = vm.board[from.row][from.col]
+        // vm.board[from.row][from.col] = nil
+        // selectedCell = nil
     }
 }

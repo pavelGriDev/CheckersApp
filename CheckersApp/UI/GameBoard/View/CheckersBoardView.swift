@@ -15,9 +15,6 @@ struct CheckersBoardView: View {
         _vm = StateObject(wrappedValue: CheckersBoardViewModel(color: color, isHost: isHost))
     }
     
-    @State private var selectedCell: BoardPosition? = nil
-    @State private var animatedPosition: BoardPosition? = nil
-    
     private let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 8)
     
     var body: some View {
@@ -45,32 +42,24 @@ struct CheckersBoardView: View {
                         Rectangle()
                             .fill(isDarkSquare ? Color.brown : Color.white)
                         
-                        
-                        // Шашка (если есть)
                         if let checker = vm.board[row][col] {
                             CheckerView(type: checker)
                                 .onTapGesture {
-                                    // selected checker
-                                    selectedCell = .init(row: row, col: col)
+                                    vm.selectChecker(at: BoardPosition(row: row, col: col))
                                     print("Checker - row: \(row), col: \(col)")
                                 }
                         } else {
-                            // Невидимая кнопка для тапов (должна покрывать ВСЮ клетку)
                             Rectangle()
                                 .opacity(0.001)
                                 .onTapGesture {
                                     print("Empty - row: \(row), col: \(col)")
-                                    if let from = selectedCell {
-                                        vm.board[row][col] = vm.board[from.row][from.col]
-                                        vm.board[from.row][from.col] = nil
-                                        selectedCell = nil
-                                    }
+                                    vm.makeMove(at: BoardPosition(row: row, col: col))
                                 }
                         }
                     }
                     .aspectRatio(1, contentMode: .fill)
                     .border(
-                        selectedCell == BoardPosition(row: row, col: col) ?
+                        vm.selectedCell == BoardPosition(row: row, col: col) ?
                         Color.blue : Color.clear,
                         width: 2
                     )
