@@ -27,7 +27,7 @@ struct CheckersBoardView: View {
                 VStack(alignment: .leading) {
                     Text("State: \(vm.connectState)")
                         .padding(.bottom, 10)
-                    Text("Player: \(vm.playersColorTitle)")
+                    Text("\(vm.currentTurnStatus.rawValue)")
                 }
                 
                 Spacer()
@@ -77,6 +77,7 @@ struct CheckersBoardView: View {
                 }
             }
             .aspectRatio(1, contentMode: .fit)
+            .rotationEffect(.degrees(vm.playersColor == .white ? 0 : 180))
         }
         .padding()
         .backgroundColor()

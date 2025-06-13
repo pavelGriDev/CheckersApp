@@ -7,21 +7,26 @@
 
 import Foundation
 
+enum TurnStatus: String {
+    case yourTurn = "Your turn"
+    case waiting = "Please wait..."
+}
+
 final class CheckersBoardViewModel: ObservableObject {
     @Published var board: [[CheckerType?]] = Array(repeating: Array(repeating: nil, count: 8), count: 8)
     
     @Published var connectState: String = ""
-    @Published var playersColorTitle: String = ""
+    @Published var currentTurnStatus: TurnStatus = .waiting
     
+    var playersColor: PlayersColor
     private let isHost: Bool
-    private var playersColor: PlayersColor {
+    private var isMyTurn: Bool = false {
         didSet {
             DispatchQueue.main.async {
-                self.playersColorTitle = self.playersColor.asString
+                self.currentTurnStatus = self.isMyTurn ? .yourTurn : .waiting
             }
         }
     }
-    private var isMyTurn: Bool = false
     
     private let mcpManager: MPCManager
     private let codableManager: CodableManager
@@ -108,8 +113,20 @@ final class CheckersBoardViewModel: ObservableObject {
             break
         }
     }
-    
-    
+}
+
+// MARK: Start game
+
+extension CheckersBoardViewModel {
+    private func startSetup(color: PlayersColor) {
+        DispatchQueue.main.async {
+            self.setupInitialBoard()
+            self.playersColor = color
+            self.isMyTurn = self.playersColor == .white
+            self.playersColor = color
+            self.objectWillChange.send()
+        }
+    }
     
     private func setupInitialBoard() {
         // Чёрные шашки (игрок снизу)
@@ -124,18 +141,6 @@ final class CheckersBoardViewModel: ObservableObject {
             for col in 0..<8 where (row + col) % 2 != 0 {
                 board[row][col] = .white
             }
-        }
-    }
-}
-
-// MARK: Start game
-
-extension CheckersBoardViewModel {
-    private func startSetup(color: PlayersColor) {
-        DispatchQueue.main.async {
-            self.setupInitialBoard()
-            self.isMyTurn = self.playersColor == .white
-            self.playersColor = color
         }
     }
 }
