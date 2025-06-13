@@ -42,6 +42,8 @@ struct CheckersBoardView: View {
                         Rectangle()
                             .fill(isDarkSquare ? Color.brown : Color.white)
                         
+                        highlightMoves(row: row, col: col)
+                        
                         if let checker = vm.board[row][col] {
                             CheckerView(type: checker)
                                 .onTapGesture {
@@ -53,7 +55,7 @@ struct CheckersBoardView: View {
                                 .opacity(0.001)
                                 .onTapGesture {
                                     print("Empty - row: \(row), col: \(col)")
-                                    vm.makeMove(at: BoardPosition(row: row, col: col))
+                                    vm.tryMove(to: BoardPosition(row: row, col: col))
                                 }
                         }
                     }
@@ -77,4 +79,15 @@ struct CheckersBoardView: View {
 
 #Preview {
     CheckersBoardView(color: .white, isHost: true)
+}
+
+extension CheckersBoardView {
+    @ViewBuilder
+    func highlightMoves(row: Int, col: Int) -> some View {
+        if vm.possibleMoves.contains(where: { $0.row == row && $0.col == col }) {
+            Circle()
+                .fill(Color.green.opacity(0.4))
+                .padding(8)
+        }
+    }
 }

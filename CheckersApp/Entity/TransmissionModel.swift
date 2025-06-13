@@ -26,9 +26,10 @@ struct StartGame: Transmissible {
 struct GameMove: Transmissible {
     let typeIdentifier: ModelType
     
-    let strokeNumber: Int
+//    let strokeNumber: Int
     let playersColor: PlayersColor
-    let moves: [BoardPosition]
+    let path: [BoardPosition]
+    let captured: [BoardPosition]
 }
 
 struct EndGame: Transmissible {
