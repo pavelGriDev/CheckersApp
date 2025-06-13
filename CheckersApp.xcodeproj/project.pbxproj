@@ -17,12 +17,24 @@
 		CE9FFC242DFAE2300061BE55 /* MatchSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC232DFAE2300061BE55 /* MatchSetup.swift */; };
 		CE9FFC262DFC49460061BE55 /* CodableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC252DFC49460061BE55 /* CodableManager.swift */; };
 		CE9FFC292DFC4BDD0061BE55 /* TransmissionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC282DFC4BDD0061BE55 /* TransmissionModel.swift */; };
+		CE9FFC2C2DFC9D220061BE55 /* CheckersGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC2B2DFC9D220061BE55 /* CheckersGameEngine.swift */; };
+		CE9FFC3F2DFC9E6B0061BE55 /* CheckersGameEngineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9FFC3E2DFC9E6B0061BE55 /* CheckersGameEngineTest.swift */; };
 		CEC5BB3F2DF8EC52002B1D52 /* CheckersAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */; };
 		CEC5BB402DF8EC52002B1D52 /* CheckersBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB3D2DF8EC52002B1D52 /* CheckersBoardView.swift */; };
 		CEC5BB412DF8EC52002B1D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */; };
 		CEC5BB432DF8F026002B1D52 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB422DF8F026002B1D52 /* MPCManager.swift */; };
 		CEC5BB492DF8F088002B1D52 /* GameBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5BB482DF8F088002B1D52 /* GameBoardViewModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE9FFC352DFC9E050061BE55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEC5BB252DF8E2ED002B1D52 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEC5BB2C2DF8E2ED002B1D52;
+			remoteInfo = CheckersApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CE9FFC0D2DF9C64E0061BE55 /* SessionConnectState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionConnectState.swift; sourceTree = "<group>"; };
@@ -35,6 +47,9 @@
 		CE9FFC232DFAE2300061BE55 /* MatchSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchSetup.swift; sourceTree = "<group>"; };
 		CE9FFC252DFC49460061BE55 /* CodableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableManager.swift; sourceTree = "<group>"; };
 		CE9FFC282DFC4BDD0061BE55 /* TransmissionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmissionModel.swift; sourceTree = "<group>"; };
+		CE9FFC2B2DFC9D220061BE55 /* CheckersGameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckersGameEngine.swift; sourceTree = "<group>"; };
+		CE9FFC312DFC9E040061BE55 /* CheckersAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheckersAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE9FFC3E2DFC9E6B0061BE55 /* CheckersGameEngineTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckersGameEngineTest.swift; sourceTree = "<group>"; };
 		CEC5BB2D2DF8E2ED002B1D52 /* CheckersApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckersApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC5BB3B2DF8EC52002B1D52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEC5BB3C2DF8EC52002B1D52 /* CheckersAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckersAppApp.swift; sourceTree = "<group>"; };
@@ -45,6 +60,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CE9FFC2E2DFC9E040061BE55 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEC5BB2A2DF8E2ED002B1D52 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -123,10 +145,27 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		CE9FFC3B2DFC9E0E0061BE55 /* CheckersAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE9FFC3D2DFC9E370061BE55 /* Service */,
+			);
+			path = CheckersAppTests;
+			sourceTree = "<group>";
+		};
+		CE9FFC3D2DFC9E370061BE55 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CE9FFC3E2DFC9E6B0061BE55 /* CheckersGameEngineTest.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		CEC5BB242DF8E2ED002B1D52 = {
 			isa = PBXGroup;
 			children = (
 				CEC5BB3E2DF8EC52002B1D52 /* CheckersApp */,
+				CE9FFC3B2DFC9E0E0061BE55 /* CheckersAppTests */,
 				CEC5BB2E2DF8E2ED002B1D52 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -135,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				CEC5BB2D2DF8E2ED002B1D52 /* CheckersApp.app */,
+				CE9FFC312DFC9E040061BE55 /* CheckersAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,6 +226,7 @@
 			children = (
 				CEC5BB422DF8F026002B1D52 /* MPCManager.swift */,
 				CE9FFC252DFC49460061BE55 /* CodableManager.swift */,
+				CE9FFC2B2DFC9D220061BE55 /* CheckersGameEngine.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -193,6 +234,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CE9FFC302DFC9E040061BE55 /* CheckersAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE9FFC372DFC9E050061BE55 /* Build configuration list for PBXNativeTarget "CheckersAppTests" */;
+			buildPhases = (
+				CE9FFC2D2DFC9E040061BE55 /* Sources */,
+				CE9FFC2E2DFC9E040061BE55 /* Frameworks */,
+				CE9FFC2F2DFC9E040061BE55 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE9FFC362DFC9E050061BE55 /* PBXTargetDependency */,
+			);
+			name = CheckersAppTests;
+			packageProductDependencies = (
+			);
+			productName = CheckersAppTests;
+			productReference = CE9FFC312DFC9E040061BE55 /* CheckersAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CEC5BB2C2DF8E2ED002B1D52 /* CheckersApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEC5BB382DF8E2EF002B1D52 /* Build configuration list for PBXNativeTarget "CheckersApp" */;
@@ -222,6 +283,10 @@
 				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
+					CE9FFC302DFC9E040061BE55 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = CEC5BB2C2DF8E2ED002B1D52;
+					};
 					CEC5BB2C2DF8E2ED002B1D52 = {
 						CreatedOnToolsVersion = 16.3;
 					};
@@ -242,11 +307,19 @@
 			projectRoot = "";
 			targets = (
 				CEC5BB2C2DF8E2ED002B1D52 /* CheckersApp */,
+				CE9FFC302DFC9E040061BE55 /* CheckersAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CE9FFC2F2DFC9E040061BE55 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEC5BB2B2DF8E2ED002B1D52 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,12 +331,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CE9FFC2D2DFC9E040061BE55 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9FFC3F2DFC9E6B0061BE55 /* CheckersGameEngineTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEC5BB292DF8E2ED002B1D52 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CEC5BB492DF8F088002B1D52 /* GameBoardViewModel.swift in Sources */,
 				CE9FFC242DFAE2300061BE55 /* MatchSetup.swift in Sources */,
+				CE9FFC2C2DFC9D220061BE55 /* CheckersGameEngine.swift in Sources */,
 				CE9FFC262DFC49460061BE55 /* CodableManager.swift in Sources */,
 				CE9FFC0E2DF9C64E0061BE55 /* SessionConnectState.swift in Sources */,
 				CE9FFC1E2DFA04760061BE55 /* CheckerView.swift in Sources */,
@@ -281,7 +363,59 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		CE9FFC362DFC9E050061BE55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEC5BB2C2DF8E2ED002B1D52 /* CheckersApp */;
+			targetProxy = CE9FFC352DFC9E050061BE55 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		CE9FFC382DFC9E050061BE55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q5L7D25SC3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pavel.CheckersAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CheckersApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CheckersApp";
+			};
+			name = Debug;
+		};
+		CE9FFC392DFC9E050061BE55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q5L7D25SC3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pavel.CheckersAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CheckersApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CheckersApp";
+			};
+			name = Release;
+		};
 		CEC5BB362DF8E2EF002B1D52 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -474,6 +608,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CE9FFC372DFC9E050061BE55 /* Build configuration list for PBXNativeTarget "CheckersAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE9FFC382DFC9E050061BE55 /* Debug */,
+				CE9FFC392DFC9E050061BE55 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CEC5BB282DF8E2ED002B1D52 /* Build configuration list for PBXProject "CheckersApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
