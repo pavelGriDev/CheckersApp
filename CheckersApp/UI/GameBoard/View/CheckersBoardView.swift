@@ -29,7 +29,7 @@ struct CheckersBoardView: View {
                 
                 Spacer()
             }
-            .padding(.bottom, 10)
+            .padding(.vertical, 10)
             
             LazyVGrid(columns: columns, spacing: 0) {
                 ForEach(0..<64, id: \.self) { index in
@@ -69,6 +69,8 @@ struct CheckersBoardView: View {
             }
             .aspectRatio(1, contentMode: .fit)
             .rotationEffect(.degrees(vm.playersColor == .white ? 0 : 180))
+            
+            Spacer()
         }
         .padding()
         .backgroundColor()

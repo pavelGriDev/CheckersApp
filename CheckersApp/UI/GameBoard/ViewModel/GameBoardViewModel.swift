@@ -34,6 +34,7 @@ final class CheckersBoardViewModel: ObservableObject {
     
     private var turnMoves: [BoardPosition] = []
     private var capturedPositions: [BoardPosition] = []
+    private var hasCapture: Bool = false
     
     private let mcpManager: MPCManager
     private let codableManager: CodableManager
@@ -134,7 +135,7 @@ final class CheckersBoardViewModel: ObservableObject {
         
         for (index, (from, to)) in zip(fromPositions, toPositions).enumerated() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                self.makeMove(from: from, to: to)
+                self.applyCheckerMove(from: from, to: to)
                 
                 if index + 1 == maxIndex {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -142,6 +143,8 @@ final class CheckersBoardViewModel: ObservableObject {
                             self.removeChecker(at: checkerPosition)
                         }
                         self.isMyTurn = true
+                        // нужно проверить всю доску на обязательные ходы
+                        // или проверять позицию последнего хода на обязательные ходы
                     }
                 }
             }
@@ -157,7 +160,6 @@ extension CheckersBoardViewModel {
             self.setupInitialBoard()
             self.playersColor = color
             self.isMyTurn = self.playersColor == .white
-            self.playersColor = color
             self.objectWillChange.send()
         }
     }
@@ -188,7 +190,16 @@ extension CheckersBoardViewModel {
         guard checker.owner == playersColor else { return }
         
         selectedCell = position
-        possibleMoves = gameEngine.possibleMoves(board: board, position)
+        
+        let forcedCapture = gameEngine.getForcedCaptures(board: board, from: position)
+        
+        if forcedCapture.isEmpty {
+            hasCapture = false
+            possibleMoves = gameEngine.getNormalMoves(board: board, from: position)
+        } else {
+            hasCapture = true
+            possibleMoves = forcedCapture
+        }
     }
     
     func tryMove(to position: BoardPosition) {
@@ -197,32 +208,59 @@ extension CheckersBoardViewModel {
         guard possibleMoves.contains(position) else { return }
                 
         // сделать ход
-        makeMove(from: selectedCell, to: position)
+        applyCheckerMove(from: selectedCell, to: position)
         appendMove(from: selectedCell, to: position)
-        // если кого-то убили нужно тоже добавить
+        
+        // временное решение для удаление шашки
+        if let midPosition = getMidPosition(from: selectedCell, to: position) {
+            board[midPosition.row][midPosition.col] = nil
+            capturedPositions.append(midPosition)
+        }
         
         self.selectedCell = nil
         possibleMoves = []
         
-        // если это конец хода
-        if true {
-           // передать ход
-            let gameMove = GameMove(
-                typeIdentifier: .move,
-                playersColor: playersColor,
-                path: turnMoves,
-                captured: capturedPositions
-            )
-            
-            do {
-                let data = try codableManager.encoded(from: gameMove)
-                try mcpManager.send(data)
-                isMyTurn = false
-                turnMoves = []
-                capturedPositions = []
-            } catch {
-                print(error.localizedDescription)
+        if hasCapture {
+            let forcedCapture = gameEngine.getForcedCaptures(board: board, from: position)
+            if forcedCapture.isEmpty {
+                giveMove()
+                hasCapture = false
+            } else {
+                self.selectedCell = position
+                possibleMoves = forcedCapture
             }
+        } else {
+            giveMove()
+            hasCapture = false
+        }
+    }
+    
+    private func giveMove() {
+        let gameMove = GameMove(
+            typeIdentifier: .move,
+            playersColor: playersColor,
+            path: turnMoves,
+            captured: capturedPositions
+        )
+        
+        do {
+            let data = try codableManager.encoded(from: gameMove)
+            try mcpManager.send(data)
+            isMyTurn = false
+            turnMoves = []
+            capturedPositions = []
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    private func getMidPosition(from: BoardPosition, to: BoardPosition) -> BoardPosition? {
+        if (from.row + to.row) % 2 == 0 {
+            let midRow = (from.row + to.row) / 2
+            let midCol = (from.col + to.col) / 2
+            return BoardPosition(row: midRow, col: midCol)
+        } else {
+            return nil
         }
     }
 }
@@ -230,7 +268,7 @@ extension CheckersBoardViewModel {
 // MARK: Helps
 
 extension CheckersBoardViewModel {
-    private func makeMove(from: BoardPosition, to: BoardPosition) {
+    private func applyCheckerMove(from: BoardPosition, to: BoardPosition) {
         board[to.row][to.col] = board[from.row][from.col]
         removeChecker(at: from)
     }
